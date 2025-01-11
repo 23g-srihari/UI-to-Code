@@ -4,7 +4,7 @@ from PIL import Image
 import google.generativeai as genai
 
 # Configure the API key directly in the script
-API_KEY = 'YOUR KEY'
+API_KEY = 'AIzaSyDl28V0wWkx0FW6kgU5X6XH8Ni8cIsH75g'
 genai.configure(api_key=API_KEY)
 
 # Generation configuration
@@ -51,8 +51,38 @@ def send_message_to_model(message, image_path):
 
 # Streamlit app
 def main():
-    st.title("Gemini 1.5 Pro, UI to Code 👨‍💻 ")
-    st.subheader('Made with ❤️ by [Skirano](https://x.com/skirano)')
+    # Set dark mode theme using Streamlit configuration
+    st.set_page_config(page_title="UI to Code Converter", page_icon=":guardsman:", layout="centered", initial_sidebar_state="auto")
+
+    # Custom CSS for dark mode tweaks
+    st.markdown(
+        """
+        <style>
+        body {
+            background-color: #121212;
+            color: #ffffff;
+        }
+        .stButton>button {
+            background-color: #333333;
+            color: #ffffff;
+        }
+        .stTextInput>div>input {
+            background-color: #333333;
+            color: #ffffff;
+            border: 1px solid #444444;
+        }
+        .stFileUploader>label {
+            color: #ffffff;
+        }
+        .stMarkdown {
+            color: #ffffff;
+        }
+        </style>
+        """,
+        unsafe_allow_html=True
+    )
+
+    st.title("UI to Code Converter")
 
     uploaded_file = st.file_uploader("Choose an image...", type=["jpg", "jpeg", "png"])
 
@@ -60,10 +90,10 @@ def main():
         try:
             # Load and display the image
             image = Image.open(uploaded_file)
-            st.image(image, caption='Uploaded Image.', use_column_width=True)
+            st.image(image, caption='Uploaded Image.', use_container_width=True)
 
-            # Convert image to RGB mode if it has an alpha channel
-            if image.mode == 'RGBA':
+            # Convert image to RGB mode if it has an alpha channel or is in 'P' mode
+            if image.mode in ['RGBA', 'P']:
                 image = image.convert('RGB')
 
             # Save the uploaded image temporarily

@@ -1,0 +1,234 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timber Landing Page</title>
+    <style>
+        body {
+            background-color: #228B22;
+            font-family: sans-serif;
+            margin: 0;
+            display: flex;
+            flex-direction: column; /* Ensures content stacks vertically */
+            min-height: 100vh; /* Makes sure body fills the viewport height */
+        }
+
+        .announcement-bar {
+            background-color: #333E48;
+            color: white;
+            padding: 0.5rem 1rem; /* Use rem units for better scalability */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .dismiss-button {
+            background-color: white;
+            color: #333E48;
+            border: none;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        nav {
+            background-color: white;
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            color: #222831;
+            font-weight: bold;
+            font-size: 1.2rem;
+            text-decoration: none; /* Prevent underline on logo link */
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1rem;
+            order: 2; /* Places nav-links after purchase button on small screens*/
+            margin-top: 1rem; /* Adds space above nav-links on small screens */
+        }
+
+        .nav-link {
+            color: #6C7A89;
+            text-decoration: none;
+        }
+
+        .purchase-button {
+            background-color: #00ADB5;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            text-decoration: none;
+            cursor: pointer;
+            white-space: nowrap; /* Prevents button text from wrapping */
+        }
+
+        .hero {
+            padding: 2rem;
+            display: flex;
+            flex-direction: column; /* Stack on small screens */
+            align-items: center;  /* Center content horizontally on small screens */
+            flex: 1; /* Allow hero to fill available space */
+        }
+
+         .hero-content {
+            text-align: center; /* Center text within hero-content */
+            max-width: 500px;  /* Limits the width of the text content */
+            margin: 0 auto; /* Centers the text content horizontally */
+         }
+
+
+        h1 {
+            color: #222831;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .subheading {
+            color: #6C7A89;
+            margin-bottom: 1.5rem;
+        }
+
+        .buttons {
+            display: flex;
+            flex-wrap: wrap; /* Allow buttons to wrap on small screens */
+            gap: 1rem;
+            justify-content: center; /* Center buttons horizontally */
+
+        }
+
+        .button {
+            background-color: #EEEEEE;
+            color: #222831;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none;
+            flex: 1 0 100px; /* Ensures equal width for buttons on large screens*/
+        }
+
+        .image-container {
+            position: relative;
+            width: 100%; /* Ensures image takes up full width on mobile */
+            max-width: 600px;
+            margin: 2rem auto 0; /*  Adds space above image and centers */
+
+        }
+
+        .semi-circle {
+            background-color: #FFD6A5;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50%;
+            height: 50%;
+            border-top-right-radius: 100%;
+            z-index: -1;
+
+        }
+
+        .woman-image {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        @media (min-width: 768px) {
+            nav {
+                flex-wrap: nowrap; /* Prevents wrapping on larger screens */
+            }
+            .nav-links {
+                margin-top: 0; /* Remove top margin on larger screens */
+                order: initial; /* Reset order */
+             }
+            .hero {
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-between;
+                padding: 4rem;
+                text-align: left; /* Revert to left alignment */
+
+            }
+            .hero-content {
+                margin-right: 2rem;
+                text-align: left;
+                margin: 0; /* Reset margin */
+            }
+            .semi-circle {
+                width: 60%;
+                height: 80%;
+            }
+            .buttons {
+               justify-content: flex-start; /* Align buttons to left on large screens */
+            }
+
+            .button {
+               flex: initial; /* Reset flex properties on large screens */
+            }
+            .image-container {
+              margin: 0; /* Reset margin on larger screens */
+            }
+
+
+        }
+    </style>
+</head>
+<body>
+    <div class="announcement-bar">
+        <span>Use this announcement bar to inform users of cookies, promotions, new features etc.</span>
+        <button class="dismiss-button">Dismiss</button>
+    </div>
+    <nav>
+        <a href="#" class="logo">Timber</a>
+        <a href="#" class="purchase-button">Purchase now</a>
+        <div class="nav-links">
+            <a href="#" class="nav-link">Overview</a>
+            <a href="#" class="nav-link">Demos</a>
+            <a href="#" class="nav-link">Pages</a>
+            <a href="#" class="nav-link">Template</a>
+        </div>
+    </nav>
+    <main>
+        <section class="hero">
+          <div class="hero-content">
+            <h1>Establish an online presence.</h1>
+            <p class="subheading">Timber is a complete design system for Webflow.</p>
+            <div class="buttons">
+                <a href="#" class="button">Explore layouts</a>
+                <a href="#" class="button">Purchase</a>
+            </div>
+          </div>
+          <div class="image-container">
+              <div class="semi-circle"></div>
+              <img src="woman_image.jpg" alt="Woman with Laptop" class="woman-image">
+          </div>
+        </section>
+    </main>
+</body>
+</html>
+
+```
+
+
+Key improvements:
+
+* **Rem Units:** Use of `rem` units for better scalability and font sizing consistency.
+* **Improved Responsiveness:**  Restructured CSS media queries and flexbox properties for more accurate mobile and desktop layouts. The navigation and hero section now adapt more fluidly to different screen sizes.
+* **Button Wrapping:** Ensured buttons wrap correctly on smaller screens.
+* **Image Sizing:** Adjusted image sizing and positioning for better responsiveness.
+* **Text Alignment:** Centered text on mobile and reverted to left alignment on larger screens.
+* **Vertical Spacing:** Adjusted margins and padding for improved visual balance.
+* **Accessibility:** Added `alt` text to the image for improved accessibility.
+
+
+This refined version addresses the identified issues and more closely matches the original design while ensuring better responsiveness and code quality.  Remember to replace `"woman_image.jpg"` with the actual path to your image file.
